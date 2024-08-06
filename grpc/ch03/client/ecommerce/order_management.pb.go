@@ -96,8 +96,64 @@ func (m *Order) GetDestination() string {
 	return ""
 }
 
+type CombinedShipment struct {
+	Id                   string   `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	Status               string   `protobuf:"bytes,2,opt,name=status,proto3" json:"status,omitempty"`
+	OrdersList           []*Order `protobuf:"bytes,3,rep,name=ordersList,proto3" json:"ordersList,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *CombinedShipment) Reset()         { *m = CombinedShipment{} }
+func (m *CombinedShipment) String() string { return proto.CompactTextString(m) }
+func (*CombinedShipment) ProtoMessage()    {}
+func (*CombinedShipment) Descriptor() ([]byte, []int) {
+	return fileDescriptor_6653354279552460, []int{1}
+}
+
+func (m *CombinedShipment) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_CombinedShipment.Unmarshal(m, b)
+}
+func (m *CombinedShipment) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_CombinedShipment.Marshal(b, m, deterministic)
+}
+func (m *CombinedShipment) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_CombinedShipment.Merge(m, src)
+}
+func (m *CombinedShipment) XXX_Size() int {
+	return xxx_messageInfo_CombinedShipment.Size(m)
+}
+func (m *CombinedShipment) XXX_DiscardUnknown() {
+	xxx_messageInfo_CombinedShipment.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_CombinedShipment proto.InternalMessageInfo
+
+func (m *CombinedShipment) GetId() string {
+	if m != nil {
+		return m.Id
+	}
+	return ""
+}
+
+func (m *CombinedShipment) GetStatus() string {
+	if m != nil {
+		return m.Status
+	}
+	return ""
+}
+
+func (m *CombinedShipment) GetOrdersList() []*Order {
+	if m != nil {
+		return m.OrdersList
+	}
+	return nil
+}
+
 func init() {
 	proto.RegisterType((*Order)(nil), "ecommerce.Order")
+	proto.RegisterType((*CombinedShipment)(nil), "ecommerce.CombinedShipment")
 }
 
 func init() {
@@ -105,21 +161,28 @@ func init() {
 }
 
 var fileDescriptor_6653354279552460 = []byte{
-	// 218 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x4c, 0x8f, 0xcd, 0x4a, 0x03, 0x31,
-	0x10, 0x80, 0xd9, 0xd4, 0x15, 0x37, 0x82, 0x4a, 0x10, 0x09, 0x45, 0x24, 0x78, 0xda, 0x53, 0x0a,
-	0x7a, 0xf3, 0x1d, 0x8a, 0xb0, 0x82, 0x57, 0x49, 0x93, 0x31, 0x0c, 0x34, 0x3f, 0xcc, 0xa6, 0xf8,
-	0x08, 0xbe, 0xb6, 0x34, 0xb1, 0x4b, 0x8f, 0x33, 0xf9, 0xbe, 0x30, 0x1f, 0x7f, 0x48, 0xe4, 0x80,
-	0xbe, 0x82, 0x89, 0xc6, 0x43, 0x80, 0x58, 0x74, 0xa6, 0x54, 0x92, 0x18, 0xc0, 0xa6, 0x10, 0x80,
-	0x2c, 0xac, 0x9f, 0x7c, 0x4a, 0x7e, 0x0f, 0x9b, 0xfa, 0xb0, 0x3b, 0x7c, 0x6f, 0x7e, 0xc8, 0xe4,
-	0x0c, 0x34, 0x37, 0xf4, 0xf9, 0xb7, 0xe3, 0xfd, 0xfb, 0xf1, 0x17, 0x71, 0xc3, 0x19, 0x3a, 0xd9,
-	0xa9, 0x6e, 0x1c, 0x26, 0x86, 0x4e, 0xdc, 0xf3, 0x1e, 0x0b, 0x84, 0x59, 0x32, 0xb5, 0x1a, 0x87,
-	0xa9, 0x0d, 0x42, 0xf1, 0x6b, 0x07, 0xb3, 0x25, 0xcc, 0x05, 0x53, 0x94, 0xab, 0x8a, 0x9f, 0xaf,
-	0x8e, 0x5e, 0x26, 0xb4, 0x20, 0x2f, 0x54, 0x37, 0xb2, 0xa9, 0x0d, 0xff, 0x5e, 0xc1, 0x68, 0xaa,
-	0xd7, 0x2f, 0xde, 0x69, 0xf5, 0xb2, 0xe5, 0xb7, 0xf5, 0x90, 0xed, 0x52, 0x23, 0xde, 0xf8, 0x95,
-	0x87, 0xd2, 0xce, 0x7b, 0xd4, 0xad, 0x44, 0x9f, 0x4a, 0xf4, 0x47, 0x21, 0x8c, 0xfe, 0xd3, 0xec,
-	0x0f, 0xb0, 0xbe, 0xd3, 0x4b, 0xb2, 0xae, 0xfc, 0xee, 0xb2, 0x72, 0xaf, 0x7f, 0x01, 0x00, 0x00,
-	0xff, 0xff, 0x58, 0x16, 0x7f, 0x4c, 0x24, 0x01, 0x00, 0x00,
+	// 322 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x94, 0x90, 0xcb, 0x6a, 0xf3, 0x30,
+	0x14, 0x84, 0x91, 0xfd, 0x27, 0xfc, 0x39, 0xe9, 0x25, 0x88, 0x12, 0x4c, 0x5a, 0x8a, 0xc9, 0xca,
+	0x2b, 0x27, 0xa4, 0xbb, 0xae, 0x0a, 0xdd, 0xf6, 0x02, 0x0e, 0x74, 0x5b, 0x14, 0xeb, 0xd4, 0x11,
+	0x44, 0x17, 0x24, 0x99, 0x3e, 0x42, 0x9f, 0xa3, 0x6f, 0x5a, 0x24, 0x27, 0x21, 0x34, 0x50, 0xda,
+	0xe5, 0x8c, 0x67, 0xc6, 0x47, 0x1f, 0x8c, 0xb5, 0xe5, 0x68, 0x5f, 0x25, 0x53, 0xac, 0x41, 0x89,
+	0xca, 0x97, 0xc6, 0x6a, 0xaf, 0xe9, 0x00, 0x6b, 0x2d, 0x25, 0xda, 0x1a, 0x27, 0xd7, 0x8d, 0xd6,
+	0xcd, 0x06, 0x67, 0xf1, 0xc3, 0xaa, 0x7d, 0x9b, 0xbd, 0x5b, 0x66, 0x0c, 0x5a, 0xd7, 0x45, 0xa7,
+	0x1f, 0x04, 0x7a, 0xcf, 0x61, 0x85, 0x9e, 0x41, 0x22, 0x78, 0x46, 0x72, 0x52, 0x0c, 0xaa, 0x44,
+	0x70, 0x7a, 0x01, 0x3d, 0xe1, 0x51, 0xba, 0x2c, 0xc9, 0xd3, 0x62, 0x50, 0x75, 0x82, 0xe6, 0x30,
+	0xe4, 0xe8, 0x6a, 0x2b, 0x8c, 0x17, 0x5a, 0x65, 0x69, 0x8c, 0x1f, 0x5a, 0xa1, 0x67, 0xac, 0xa8,
+	0x31, 0xfb, 0x97, 0x93, 0x22, 0xa9, 0x3a, 0xb1, 0xed, 0x79, 0xa1, 0x58, 0xec, 0xf5, 0xf6, 0xbd,
+	0x9d, 0x35, 0xdd, 0xc0, 0xe8, 0x5e, 0xcb, 0x95, 0x50, 0xc8, 0x97, 0x6b, 0x61, 0xc2, 0x73, 0x8e,
+	0x6e, 0x1a, 0x43, 0xdf, 0x79, 0xe6, 0xdb, 0x70, 0x54, 0xf0, 0xb6, 0x8a, 0xce, 0x01, 0x22, 0x0a,
+	0xf7, 0x20, 0x9c, 0xcf, 0xd2, 0x3c, 0x2d, 0x86, 0x8b, 0x51, 0xb9, 0xa7, 0x50, 0xc6, 0x17, 0x56,
+	0x07, 0x99, 0xc5, 0x67, 0x02, 0xe7, 0xd1, 0x7d, 0xdc, 0xc3, 0xa3, 0xb7, 0xf0, 0xbf, 0x41, 0xdf,
+	0xd1, 0xb8, 0x2a, 0x3b, 0x70, 0xe5, 0x0e, 0x5c, 0xb9, 0xf4, 0x56, 0xa8, 0xe6, 0x85, 0x6d, 0x5a,
+	0x9c, 0x1c, 0x6d, 0xd3, 0x3b, 0x38, 0x71, 0xc8, 0x6c, 0xbd, 0x8e, 0xd2, 0xfd, 0xb5, 0x3f, 0x27,
+	0x61, 0xa1, 0x35, 0x9c, 0x79, 0xdc, 0x2e, 0x1c, 0x65, 0x26, 0x3f, 0x6e, 0x16, 0x84, 0x3e, 0xc1,
+	0xa9, 0xb1, 0xba, 0x46, 0xe7, 0x7e, 0x75, 0xc4, 0xe5, 0xc1, 0x0f, 0xbe, 0x93, 0x2f, 0xc8, 0x9c,
+	0xac, 0xfa, 0xb1, 0x76, 0xf3, 0x15, 0x00, 0x00, 0xff, 0xff, 0x77, 0x29, 0x18, 0x88, 0x67, 0x02,
+	0x00, 0x00,
 }
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -135,6 +198,9 @@ const _ = grpc.SupportPackageIsVersion6
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
 type OrderManagementClient interface {
 	GetOrder(ctx context.Context, in *wrapperspb.StringValue, opts ...grpc.CallOption) (*Order, error)
+	SearchOrders(ctx context.Context, in *wrapperspb.StringValue, opts ...grpc.CallOption) (OrderManagement_SearchOrdersClient, error)
+	UpdateOrders(ctx context.Context, opts ...grpc.CallOption) (OrderManagement_UpdateOrdersClient, error)
+	ProcessOrders(ctx context.Context, opts ...grpc.CallOption) (OrderManagement_ProcessOrdersClient, error)
 }
 
 type orderManagementClient struct {
@@ -154,9 +220,109 @@ func (c *orderManagementClient) GetOrder(ctx context.Context, in *wrapperspb.Str
 	return out, nil
 }
 
+func (c *orderManagementClient) SearchOrders(ctx context.Context, in *wrapperspb.StringValue, opts ...grpc.CallOption) (OrderManagement_SearchOrdersClient, error) {
+	stream, err := c.cc.NewStream(ctx, &_OrderManagement_serviceDesc.Streams[0], "/ecommerce.OrderManagement/searchOrders", opts...)
+	if err != nil {
+		return nil, err
+	}
+	x := &orderManagementSearchOrdersClient{stream}
+	if err := x.ClientStream.SendMsg(in); err != nil {
+		return nil, err
+	}
+	if err := x.ClientStream.CloseSend(); err != nil {
+		return nil, err
+	}
+	return x, nil
+}
+
+type OrderManagement_SearchOrdersClient interface {
+	Recv() (*Order, error)
+	grpc.ClientStream
+}
+
+type orderManagementSearchOrdersClient struct {
+	grpc.ClientStream
+}
+
+func (x *orderManagementSearchOrdersClient) Recv() (*Order, error) {
+	m := new(Order)
+	if err := x.ClientStream.RecvMsg(m); err != nil {
+		return nil, err
+	}
+	return m, nil
+}
+
+func (c *orderManagementClient) UpdateOrders(ctx context.Context, opts ...grpc.CallOption) (OrderManagement_UpdateOrdersClient, error) {
+	stream, err := c.cc.NewStream(ctx, &_OrderManagement_serviceDesc.Streams[1], "/ecommerce.OrderManagement/updateOrders", opts...)
+	if err != nil {
+		return nil, err
+	}
+	x := &orderManagementUpdateOrdersClient{stream}
+	return x, nil
+}
+
+type OrderManagement_UpdateOrdersClient interface {
+	Send(*Order) error
+	CloseAndRecv() (*wrapperspb.StringValue, error)
+	grpc.ClientStream
+}
+
+type orderManagementUpdateOrdersClient struct {
+	grpc.ClientStream
+}
+
+func (x *orderManagementUpdateOrdersClient) Send(m *Order) error {
+	return x.ClientStream.SendMsg(m)
+}
+
+func (x *orderManagementUpdateOrdersClient) CloseAndRecv() (*wrapperspb.StringValue, error) {
+	if err := x.ClientStream.CloseSend(); err != nil {
+		return nil, err
+	}
+	m := new(wrapperspb.StringValue)
+	if err := x.ClientStream.RecvMsg(m); err != nil {
+		return nil, err
+	}
+	return m, nil
+}
+
+func (c *orderManagementClient) ProcessOrders(ctx context.Context, opts ...grpc.CallOption) (OrderManagement_ProcessOrdersClient, error) {
+	stream, err := c.cc.NewStream(ctx, &_OrderManagement_serviceDesc.Streams[2], "/ecommerce.OrderManagement/processOrders", opts...)
+	if err != nil {
+		return nil, err
+	}
+	x := &orderManagementProcessOrdersClient{stream}
+	return x, nil
+}
+
+type OrderManagement_ProcessOrdersClient interface {
+	Send(*wrapperspb.StringValue) error
+	Recv() (*CombinedShipment, error)
+	grpc.ClientStream
+}
+
+type orderManagementProcessOrdersClient struct {
+	grpc.ClientStream
+}
+
+func (x *orderManagementProcessOrdersClient) Send(m *wrapperspb.StringValue) error {
+	return x.ClientStream.SendMsg(m)
+}
+
+func (x *orderManagementProcessOrdersClient) Recv() (*CombinedShipment, error) {
+	m := new(CombinedShipment)
+	if err := x.ClientStream.RecvMsg(m); err != nil {
+		return nil, err
+	}
+	return m, nil
+}
+
 // OrderManagementServer is the server API for OrderManagement service.
 type OrderManagementServer interface {
 	GetOrder(context.Context, *wrapperspb.StringValue) (*Order, error)
+	SearchOrders(*wrapperspb.StringValue, OrderManagement_SearchOrdersServer) error
+	UpdateOrders(OrderManagement_UpdateOrdersServer) error
+	ProcessOrders(OrderManagement_ProcessOrdersServer) error
 }
 
 // UnimplementedOrderManagementServer can be embedded to have forward compatible implementations.
@@ -165,6 +331,15 @@ type UnimplementedOrderManagementServer struct {
 
 func (*UnimplementedOrderManagementServer) GetOrder(ctx context.Context, req *wrapperspb.StringValue) (*Order, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetOrder not implemented")
+}
+func (*UnimplementedOrderManagementServer) SearchOrders(req *wrapperspb.StringValue, srv OrderManagement_SearchOrdersServer) error {
+	return status.Errorf(codes.Unimplemented, "method SearchOrders not implemented")
+}
+func (*UnimplementedOrderManagementServer) UpdateOrders(srv OrderManagement_UpdateOrdersServer) error {
+	return status.Errorf(codes.Unimplemented, "method UpdateOrders not implemented")
+}
+func (*UnimplementedOrderManagementServer) ProcessOrders(srv OrderManagement_ProcessOrdersServer) error {
+	return status.Errorf(codes.Unimplemented, "method ProcessOrders not implemented")
 }
 
 func RegisterOrderManagementServer(s *grpc.Server, srv OrderManagementServer) {
@@ -189,6 +364,79 @@ func _OrderManagement_GetOrder_Handler(srv interface{}, ctx context.Context, dec
 	return interceptor(ctx, in, info, handler)
 }
 
+func _OrderManagement_SearchOrders_Handler(srv interface{}, stream grpc.ServerStream) error {
+	m := new(wrapperspb.StringValue)
+	if err := stream.RecvMsg(m); err != nil {
+		return err
+	}
+	return srv.(OrderManagementServer).SearchOrders(m, &orderManagementSearchOrdersServer{stream})
+}
+
+type OrderManagement_SearchOrdersServer interface {
+	Send(*Order) error
+	grpc.ServerStream
+}
+
+type orderManagementSearchOrdersServer struct {
+	grpc.ServerStream
+}
+
+func (x *orderManagementSearchOrdersServer) Send(m *Order) error {
+	return x.ServerStream.SendMsg(m)
+}
+
+func _OrderManagement_UpdateOrders_Handler(srv interface{}, stream grpc.ServerStream) error {
+	return srv.(OrderManagementServer).UpdateOrders(&orderManagementUpdateOrdersServer{stream})
+}
+
+type OrderManagement_UpdateOrdersServer interface {
+	SendAndClose(*wrapperspb.StringValue) error
+	Recv() (*Order, error)
+	grpc.ServerStream
+}
+
+type orderManagementUpdateOrdersServer struct {
+	grpc.ServerStream
+}
+
+func (x *orderManagementUpdateOrdersServer) SendAndClose(m *wrapperspb.StringValue) error {
+	return x.ServerStream.SendMsg(m)
+}
+
+func (x *orderManagementUpdateOrdersServer) Recv() (*Order, error) {
+	m := new(Order)
+	if err := x.ServerStream.RecvMsg(m); err != nil {
+		return nil, err
+	}
+	return m, nil
+}
+
+func _OrderManagement_ProcessOrders_Handler(srv interface{}, stream grpc.ServerStream) error {
+	return srv.(OrderManagementServer).ProcessOrders(&orderManagementProcessOrdersServer{stream})
+}
+
+type OrderManagement_ProcessOrdersServer interface {
+	Send(*CombinedShipment) error
+	Recv() (*wrapperspb.StringValue, error)
+	grpc.ServerStream
+}
+
+type orderManagementProcessOrdersServer struct {
+	grpc.ServerStream
+}
+
+func (x *orderManagementProcessOrdersServer) Send(m *CombinedShipment) error {
+	return x.ServerStream.SendMsg(m)
+}
+
+func (x *orderManagementProcessOrdersServer) Recv() (*wrapperspb.StringValue, error) {
+	m := new(wrapperspb.StringValue)
+	if err := x.ServerStream.RecvMsg(m); err != nil {
+		return nil, err
+	}
+	return m, nil
+}
+
 var _OrderManagement_serviceDesc = grpc.ServiceDesc{
 	ServiceName: "ecommerce.OrderManagement",
 	HandlerType: (*OrderManagementServer)(nil),
@@ -198,6 +446,23 @@ var _OrderManagement_serviceDesc = grpc.ServiceDesc{
 			Handler:    _OrderManagement_GetOrder_Handler,
 		},
 	},
-	Streams:  []grpc.StreamDesc{},
+	Streams: []grpc.StreamDesc{
+		{
+			StreamName:    "searchOrders",
+			Handler:       _OrderManagement_SearchOrders_Handler,
+			ServerStreams: true,
+		},
+		{
+			StreamName:    "updateOrders",
+			Handler:       _OrderManagement_UpdateOrders_Handler,
+			ClientStreams: true,
+		},
+		{
+			StreamName:    "processOrders",
+			Handler:       _OrderManagement_ProcessOrders_Handler,
+			ServerStreams: true,
+			ClientStreams: true,
+		},
+	},
 	Metadata: "order_management.proto",
 }

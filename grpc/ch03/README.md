@@ -11,4 +11,3 @@ cd client && go build -v -o ../build/client && cd ..
 ./build/server
 ./build/client
 ```
-
